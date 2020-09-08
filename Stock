@@ -1,0 +1,30 @@
+import pandas as pd
+import numpy as np
+import sklearn
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+import statsmodels.api as sm
+
+data=pd.read_csv("FRETAIL.NS.csv")
+
+print(data.shape)
+X=data.drop(['High'], axis = 1)
+y=data["High"]
+
+model = sm.OLS(y, X).fit()
+
+
+print(model.summary())
+print(45*'||')
+X = sm.add_constant(X)
+
+model = sm.OLS(y, X).fit()
+predictions = model.predict(X)
+
+print(model.summary())
+print(45*'||')
+
+model = sm.OLS(y, X).fit()
+predictions = model.predict(X)
+
+print(model.summary())
